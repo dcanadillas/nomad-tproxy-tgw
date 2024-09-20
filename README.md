@@ -25,7 +25,7 @@ chown nomad:nomad /opt/nomad
 
 Clone the repo and get into it:
 ```bash
-git clone <this_repo_url> $HOME/nomad-tgw
+git clone https://github.com/dcanadillas/nomad-tproxy-tgw $HOME/nomad-tgw
 cd $HOME/nomad-tgw
 ```
 
