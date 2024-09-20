@@ -1,4 +1,4 @@
-variabel "datacenter" {
+variable "datacenter" {
   default = "dc1"
 }
 job "terminating-gateway" {
