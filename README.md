@@ -197,7 +197,7 @@ Add the binding rule:
 consul acl binding-rule create \
 -method nomad-workloads \
 -bind-type role \
--bind-name terminating-gateway \
+-bind-name terminating-gateway-role \
 -selector 'value.nomad_service=="terminating-gateway"' 
 ```
 
@@ -217,6 +217,11 @@ We will use [`ServiceDefaults` destinations](https://developer.hashicorp.com/con
 Deploy the `ServiceDefaults` with the file included:
 ```bash
 consul config write ./configs/service-defaults-tls.hcl
+```
+
+And you also need to add the Consul intention to allow traffic from services to the `ServiceDefault` configured:
+```bash
+consul config write configs/tls-destination-intention.hcl
 ```
 
 ## Test Connectivity with MeshDestinationsOnly
