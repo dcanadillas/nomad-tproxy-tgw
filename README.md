@@ -10,6 +10,8 @@
 
 > NOTE: If you have already a Consul and Nomad cluster running you can skip this section. But bear in mind that you need at least Consul ACLs enabled to work with [Nomad Workload Identities](https://developer.hashicorp.com/nomad/docs/integrations/consul/acl#nomad-workload-identities)
 
+> NOTE: You can also skip this if you use the [included Multipasss configuration installation](./multipass/README.md#deploy-consul-and-nomad-demo-with-multipass) 
+
 Get into your Linux VM and Install required packages:
 ```bash
 sudo apt install nomad consul uuid -y
