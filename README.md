@@ -95,7 +95,7 @@ EOF
 Export variables:
 ```
 export CONSUL_HTTP_ADDR=https://$(ip route | grep ^default | awk ' {print $9}'):8501
-export CONSUL_CACERT="/etc/consul.d/tls/consul-agent-ca.pem
+export CONSUL_CACERT="/etc/consul.d/tls/consul-agent-ca.pem"
 export CONSUL_TLS_SERVER_NAME="$(openssl x509 -in /etc/consul.d/tls/dc1-server-consul-0.pem  -subject | awk '/subject/ {print $NF}')"
 ```
 
@@ -127,6 +127,19 @@ EOF
 
 ```bash
 export NOMAD_ADDR=http://$(ip route | grep ^default | awk ' {print $9}'):4646
+```
+
+### Consul CNI plugin
+You must install Consul CNI plugin in order to use Transparent proxy:
+```bash
+sudo apt install consul-cni
+```
+
+### Run Consul and Nomad
+Once that configuration is ready you need to run both Consul and Nomad:
+```bash
+sudo systemctl start consul
+sudo systemctl start nomad
 ```
 
 ## Configure Workload Identity
