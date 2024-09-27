@@ -172,7 +172,7 @@ consul config write ./configs/public-api-intentions.hcl
 
 Check your application:
 ```bash
-nomad exec -task web $(nomad operator api $NOMAD_ADDR/v1/job/front-service/allocations | jq -r .[].ID) curl localhost:9090
+nomad exec -task web $(nomad operator api $NOMAD_ADDR/v1/job/front-service/allocations | jq -r '.[] | select(.ClientStatus == "running") | .ID') curl localhost:9090
 ```
 
 
@@ -210,7 +210,7 @@ nomad run ./tgw.nomad.hcl
 
 You can look at the logs to check that the Terminating Gateway is working properly:
 ```bash
-nomad alloc logs -stderr $(nomad operator api $NOMAD_ADDR/v1/job/terminating-gateway/allocations | jq -r .[].ID)
+nomad alloc logs -stderr $(nomad operator api $NOMAD_ADDR/v1/job/terminating-gateway/allocations | jq -r '.[] | select(.ClientStatus == "running") | .ID')
 ```
 
 ## Configure Destinations
